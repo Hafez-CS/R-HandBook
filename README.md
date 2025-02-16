@@ -2,45 +2,45 @@
 
 ## R Syntax
 
-```
+```R
 "hello world"
 
-[1] "hello world"
+# output : "hello world"
 ```
 
-```
+```R
 1
 
-[1] 1
+# output : 1
 ```
 
-```
+```R
 5 + 5
 
-[1] 10
+# output : 10
 ```
 ### print
 
-```
+```R
 print("Hello World!")
 
-[1] "Hello World!"
+# output : "Hello World!"
 ```
 
-```
+```R
 for (x in 1:10) {
   print(x)} 
 
-[1] 1
-[1] 2
-[1] 3
-[1] 4
-[1] 5
-[1] 6
-[1] 7
-[1] 8
-[1] 9
-[1] 10
+# output :  1
+2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 **sprintf**
 ```
@@ -48,7 +48,7 @@ a = 12.3
 sprintf("The value of a is: %f", a)
 
 
-[1] "The value of a is: 12.300000"
+# output : "The value of a is: 12.300000"
 ```
 **paste**
 
@@ -56,7 +56,7 @@ sprintf("The value of a is: %f", a)
 paste("Hello", "World")
 
 
-[1] "Hello World"
+# output : "Hello World"
 ```
 
 ```
