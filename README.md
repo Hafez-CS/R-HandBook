@@ -80,11 +80,19 @@ As an interpreted language, R has a native command line interface. Moreover, mul
 
 **&nbsp;&nbsp;&nbsp;** **27. R-Bar-Charts :** **&nbsp;**  **[`R-Bar-Charts`](#r-bar-charts)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **28. R-Statistics :** **&nbsp;**  **[`R-Statistics`](#r-statistics)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **29. R-Percentiles :** **&nbsp;**  **[`R-Percentiles`](#r-percentiles)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **30. Library :** **&nbsp;**  **[`Library`](#library)** 
+
+**&nbsp;&nbsp;&nbsp;** **31. Stringr-Library :** **&nbsp;**  **[`Stringr-Library`](#stringr-library)** 
+
+**&nbsp;&nbsp;&nbsp;** **32. MASS-Library :** **&nbsp;**  **[`MASS-Library`](#mass-library)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)**
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)**
 
 
 R-Syntax
@@ -2701,5 +2709,238 @@ Data_Cars$cyl
 # output :
 [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
 ```
+**Sort Variable Values**
+```R
+Data_Cars <- mtcars
+sort(Data_Cars$cyl) 
 
 
+# output :
+[1] 4 4 4 4 4 4 4 4 4 4 4 6 6 6 6 6 6 6 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+```
+**Analyzing the Data**
+
+```R
+Data_Cars <- mtcars
+summary(Data_Cars) 
+
+
+# output :
+      mpg             cyl             disp             hp       
+ Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
+ 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
+ Median :19.20   Median :6.000   Median :196.3   Median :123.0  
+ Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
+ 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
+ Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
+      drat             wt             qsec             vs        
+ Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
+ 1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
+ Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
+ Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
+ 3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
+ Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
+       am              gear            carb      
+ Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+ 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+ Median :0.0000   Median :4.000   Median :2.000  
+ Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+ 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :1.0000   Max.   :5.000   Max.   :8.000
+```
+### R Max and Min
+```R
+Data_Cars <- mtcars
+max(Data_Cars$hp)
+min(Data_Cars$hp)
+
+
+# output :
+[1] 335
+[1] 52
+```
+we can use the which.max() and which.min() functions to find the index position of the max and min value in the table:
+```R
+Data_Cars <- mtcars
+which.max(Data_Cars$hp)
+which.min(Data_Cars$hp) 
+
+
+# output :
+[1] 31
+[1] 19 
+```
+Or even better, combine which.max() and which.min() with the rownames() function to get the name of the car with the largest and smallest horsepower:
+```R
+Data_Cars <- mtcars
+rownames(Data_Cars)[which.max(Data_Cars$hp)]
+rownames(Data_Cars)[which.min(Data_Cars$hp)] 
+
+
+# output :
+[1] "Maserati Bora"
+[1] "Honda Civic"
+```
+### R Mean, Median, Mode
+
+**R Mean**
+
+To calculate the average value (mean) of a variable from the mtcars data set, find the sum of all values, and divide the sum by the number of values.
+| 1.513 |	1.615 | 	1.835 | 	1.935 | 	2.140 | 	2.200 | 	2.320 | 	2.465 |
+| -------- | ------- | -------- | ------- | -------- | ------- | -------- | -------  
+| 2.620 | 	2.770 | 	2.780 | 	2.875 | 	3.150 | 	3.170 | 	3.190 | 	3.215 |
+| 3.435 | 	3.440 | 	3.440 | 	3.440 | 	3.460 | 	3.520 | 	3.570 | 	3.570 |
+| 3.730 | 	3.780 | 	3.840 | 	3.845 | 	4.070 | 	5.250 |  	5.345 | 	5.424 |
+
+```R
+Data_Cars <- mtcars
+mean(Data_Cars$wt)
+
+# output :
+[1] 3.21725
+```
+**R Median**
+
+The median value is the value in the middle, after you have sorted all the values.
+
+If we take a look at the values of the wt variable (from the mtcars data set), we will see that there are two numbers in the middle: 
+
+Note: If there are two numbers in the middle, you must divide the sum of those numbers by two, to find the median.
+
+Luckily, R has a function that does all of that for you: Just use the median() function to find the middle value:
+```R
+Data_Cars <- mtcars
+median(Data_Cars$wt)
+
+
+# output :
+[1] 3.325
+```
+**R Mode**
+
+The mode value is the value that appears the most number of times.
+
+R does not have a function to calculate the mode. However, we can create our own function to find it.
+
+If we take a look at the values of the wt variable (from the mtcars data set), we will see that the numbers 3.440 are often shown:
+
+```R
+Data_Cars <- mtcars
+names(sort(-table(Data_Cars$wt)))[1]
+
+
+# output :
+[1] "3.44"
+```
+
+R-Percentiles
+---
+Percentiles are used in statistics to give you a number that describes the value that a given percent of the values are lower than.
+
+If we take a look at the values of the wt (weight) variable from the mtcars data set:
+
+What is the 75. percentile of the weight of the cars? The answer is 3.61 or 3 610 lbs, meaning that 75% or the cars weight 3 610 lbs or less:
+```R
+Data_Cars <- mtcars
+quantile(Data_Cars$wt, c(0.75))   # c() specifies which percentile you 
+
+
+# output :
+75% 
+3.61
+```
+If you run the quantile() function without specifying the c() parameter, you will get the percentiles of 0, 25, 50, 75 and 100:
+```R
+Data_Cars <- mtcars
+quantile(Data_Cars$wt) 
+
+
+# output :
+     0%     25%     50%     75%    100% 
+1.51300 2.58125 3.32500 3.61000 5.42400
+```
+Quartiles are data divided into four parts, when sorted in an ascending order:
+
+* The value of the first quartile cuts off the first 25% of the data
+* The value of the second quartile cuts off the first 50% of the data
+* The value of the third quartile cuts off the first 75% of the data
+* The value of the fourth quartile cuts off the 100% of the data
+
+
+Library
+---
+install library
+```R
+install.packages("x")
+```
+install more than 1 library At the same time
+```R
+install.packages(c("x", "y", "z"))
+```
+call library
+```R
+library(ggplot2)
+```
+
+Stringr-Library
+---
+```R
+library(stringr)
+a <- "hafez"
+str_to_upper(a)   
+str_to_lower(a)    
+str_to_title(a)   
+str_to_sentence(a) 
+
+
+#output :  "HAFEZ"
+
+#output :  "hafez"
+
+#output :  "Hafez"
+
+#output :  "Hafez"
+```
+
+MASS-Library
+---
+```R
+library(MASS)
+x <- 3.75
+as.integer(x)
+
+
+#output :  3
+```
+```R
+library(MASS)
+x <- 3.14159
+round(x, 2)
+
+
+#output :  3.14
+```
+```R
+library(MASS)
+x <- 5
+as.double(x)
+
+
+#output :  5
+```
+```R
+library(MASS)
+x <- 3.75
+floor(x)
+
+
+#output :  3
+```
+```R
+library(MASS)
+x <- 0.75
+fractions(x)
+
+
+#output :  3/4
+```
