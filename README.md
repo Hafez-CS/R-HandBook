@@ -90,10 +90,15 @@ As an interpreted language, R has a native command line interface. Moreover, mul
 
 **&nbsp;&nbsp;&nbsp;** **32. MASS-Library :** **&nbsp;**  **[`MASS-Library`](#mass-library)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)**
+**&nbsp;&nbsp;&nbsp;** **33. pracma-Library :** **&nbsp;**  **[`pracma-Library`](#pracma-library)**
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)**
+**&nbsp;&nbsp;&nbsp;** **34. R-table :** **&nbsp;**  **[`R-table`](#r-table)**
 
+**&nbsp;&nbsp;&nbsp;** **35. purrr-Library :** **&nbsp;**  **[`purrr-Library`](#purrr-library)**
+
+**&nbsp;&nbsp;&nbsp;** **36. Read-file :** **&nbsp;**  **[`Read-file`](#read-file)**
+
+**&nbsp;&nbsp;&nbsp;** **37. write-File :** **&nbsp;**  **[`Write-File`](#write-file)**
 
 R-Syntax
 ---
@@ -2944,3 +2949,278 @@ fractions(x)
 
 #output :  3/4
 ```
+
+pracma-Library
+---
+```R
+#Calculations with degrees
+Library(pracma)
+a <- 90
+sind(a)
+cosd(a)
+tand(a)
+
+
+# output :
+[1] 1
+[1] 0
+[1] Inf
+```
+```R
+library(pracma)
+a <- c(1, 2, 3)
+b <- c(4, 5, 6)
+cross(a, b)       # The cross product is the product of two three-dimensional vectors.
+
+
+# output :
+[1] -3  6 -3
+```
+
+R-table
+---
+
+```R
+x <- c("A", "B", "A", "C", "B", "A", "C", "C")
+table(x)
+
+
+# output :
+x
+A B C 
+3 2 3 
+```
+```R
+y <- c(1, 2, 2, 3, 1, 1, 3, 2, 3, 3, 3)
+table(y)
+
+
+# output :
+y
+1 2 3 
+3 3 5 
+```
+```R
+gender <- c("Male", "Female", "Male", "Female", "Female", "Male", "Male")
+passed <- c("Yes", "No", "Yes", "Yes", "No", "No", "Yes")
+table(gender, passed)
+
+
+# output :
+       passed
+gender  No Yes
+Female  2   1
+Male    1   3
+```
+
+purrr-Library
+---
+```R
+library(purrr)
+nested_list <- list(1, 2, list(3, 4, list(5, 6)))
+flatten(nested_list)
+
+
+# output :
+[1] 1 2 3 4 5 6
+```
+```R
+list_of_vectors <- list(c(1, 2), c(3, 4), c(5, 6))
+flatten(list_of_vectors)
+
+
+# output :
+[1] 1 2 3 4 5 6
+```
+
+Read-file
+---
+### read.table
+
+`read.table(file, header = TRUE/FALSE, sep = "", dec = ".", stringsAsFactors = FALSE)`
+
+`file` → Address of the text file you want to read (e.g. `"data.txt"` or `"C:/Users/YourName/data.csv"`).
+
+`header = TRUE/FALSE` → Specifies whether the file has the first row as column names:
+
+* `TRUE` → The first row is the column names.
+
+* `FALSE` → The first row is also considered as data.
+
+`sep` → Separator between data:
+
+* `""` (default) → Whitespace
+
+* `","` → Comma (for CSV)
+
+* `"\t"` → Tab (for TSV files)
+
+`dec` → Decimal symbol (`"."` or `","` depending on the data format).
+
+`stringsAsFactors = FALSE` → Prevents conversion of strings into `factors`.
+
+```R
+data <- read.table("data.txt", header = TRUE)
+
+data <- read.table("data.csv", header = TRUE, sep = ",")
+
+data <- read.table("data.tsv", header = TRUE, sep = "\t")
+```
+if your file is too big (csv) use this one :
+
+```R
+library(data.table)
+data <- fread("data.csv")
+```
+### readLines
+
+`readLines(con, n = -1, encoding = "UTF-8", warn = TRUE)`
+
+`con` → Address of the text file you want to read (e.g. `"data.txt"` or `"C:/Users/YourName/data.txt"`).
+
+`n` → Number of lines to read:
+
+* `-1` (default) → The entire file is read.
+
+* A specific number such as `n = 10` → Only the first 10 lines are read.
+
+`encoding` → Specifies the encoding type (e.g. `"UTF-8"` or `"latin1"`).
+
+`warn` → If `TRUE`, displays a warning if there are problems such as incomplete files.
+
+read all in file :
+```R
+lines <- readLines("data.txt")
+print(lines)
+```
+read just 5 line :
+```R
+lines <- readLines("data.txt", n = 5)
+```
+read data from URL :
+```R
+lines <- readLines("https://example.com/data.txt")
+```
+### read.csv
+`read.csv(file, header = TRUE/FALSE, sep = ",", stringsAsFactors = FALSE)`
+
+`file` → CSV file address (e.g. `"data.csv"` or `"C:/Users/YourName/data.csv"`).
+
+`header = TRUE/FALSE` → Specifies whether the first row is the column names:
+
+* `TRUE` (default) → The first row is treated as the column names.
+
+* `FALSE` → The first row is also treated as data.
+
+`sep = ","` → Specifies that the separator between values ​​is a comma (`,`).
+
+`stringsAsFactors = FALSE` → To prevent strings (`character`) from being converted to factors (`factor`).
+
+```R
+data <- read.csv("data.csv", header = TRUE)
+
+data <- read.csv("data.csv", header = FALSE)
+
+data <- read.csv("data.csv", sep = ";", header = TRUE)
+
+data <- read.csv("data.csv", header = TRUE, stringsAsFactors = FALSE)
+
+data <- read.csv("data.csv", header = TRUE, nrows = 10)
+```
+### scan
+`scan(file, what = list(type1, type2, ...), skip = 0, sep = "", quiet = FALSE)`
+
+`file` → Address of the input file (e.g. `"data.txt"`). If the value is `""`, the data is read from the standard input (`stdin`).
+
+`what` → The type of data to be read:
+
+`numeric (0)` → numeric
+
+`character ("")` → string
+
+`integer (0L)` → integer
+
+`logical (TRUE/FALSE)` → Boolean value
+
+`list(0, "")` → A list of several data types
+
+`skip = n` → Specifies how many lines of the first file to skip.
+
+`sep = " "` → Specifies what the data separator is (e.g. `,` or `\t`).
+
+`quiet = TRUE/FALSE` → If `TRUE`, the data reading messages are not displayed.
+
+```R
+data <- scan("numbers.txt")
+print(data)
+```
+
+```R
+data <- scan("words.txt", what = "")
+print(data)
+```
+
+```R
+data <- scan("mixed.txt", what = list(0, ""))
+print(data)
+```
+
+```R
+data <- scan("data.txt", what = "", skip = 2)     # The first 2 lines of the file are ignored.
+```
+
+```R
+data <- scan("data.txt", what = "", sep = ",")
+```
+
+Write-File
+---
+### write.table
+`write.table(x, file, sep = " ", row.names = TRUE, col.names = TRUE, quote = TRUE)`
+
+`x` → The data to be saved (such as `data.frame` or `matrix`).
+
+`file` → The path to the file where the data will be saved (e.g. "D:/data/output.txt").
+
+`sep = " "` → The separator between values ​​(`" "` = space, `","` = comma for CSV, `"\t"` = tab for TSV).
+
+`row.names = TRUE/FALSE` → Specifies whether to save row numbers.
+
+`col.names = TRUE/FALSE` → Specifies whether to save column names.
+
+`quote = TRUE/FALSE` → Specifies whether to enclose text values ​​in quotes (`" "`).
+
+```R
+write.table(women, "D:/data/women.txt", row.names = FALSE, col.names = TRUE)      # women is a built-in dataset in R that contains height and weight.
+```
+```R
+write.table(women, "D:/data/women.csv", sep = ",", row.names = FALSE, col.names = TRUE)
+```
+### write.csv
+
+`write.csv(x, file, row.names = TRUE, col.names = NA, quote = TRUE)`
+
+`x` → The data set (`data.frame`) to be saved.
+
+`file` → The address of the file where the data is saved (e.g. `"D:/data/output.csv"`).
+
+`row.names = TRUE/FALSE` → Whether to save row numbers or not? Default is `TRUE`.
+
+`quote = TRUE/FALSE `→ Whether to enclose text values ​​in quotes (`" "`)? Default is `TRUE`.
+
+`col.names = NA` → In standard CSV, the first column is the row number by default. If `row.names = FALSE`, do not change the value of `NA`.
+
+```R
+write.csv(women, "D:/data/women.csv", row.names = FALSE)
+```
+
+```R
+write.csv(women, "D:/data/women_with_rows.csv", row.names = TRUE)
+```
+
+```R
+write.csv(women, "D:/data/women_no_quotes.csv", row.names = FALSE, quote = FALSE)
+```
+
+
+
