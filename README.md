@@ -64,21 +64,21 @@ As an interpreted language, R has a native command line interface. Moreover, mul
 
 **&nbsp;&nbsp;&nbsp;** **19. R-Matrices :** **&nbsp;**  **[`R-Matrices`](#r-matrices)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **20. R-Arrays :** **&nbsp;**  **[`R-Arrays`](#r-arrays)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **21. R-Data-Frames :** **&nbsp;**  **[`R-Data-Frames`](#r-data-frames)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **22. R-Factors :** **&nbsp;**  **[`R-Factors`](#r-factors)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **23. R-Plotting :** **&nbsp;**  **[`R-Plotting`](#r-plotting)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **24. R-Line :** **&nbsp;**  **[`R-Line`](#r-line)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **25. R-Scatter-Plot :** **&nbsp;**  **[`R-Scatter-Plot`](#r-scatter-plot)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **26. R-Pie-Charts :** **&nbsp;**  **[`R-Pie-Charts`](#r-pie-charts)** 
 
-**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+**&nbsp;&nbsp;&nbsp;** **27. R-Bar-Charts :** **&nbsp;**  **[`R-Bar-Charts`](#r-bar-charts)** 
 
 **&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
 
@@ -1850,7 +1850,856 @@ Matrix_Combined
 [2,] "banana" "grape"  "mango"  "watermelon"
 ```
 
+R-Arrays
+---
+Compared to matrices, arrays can have more than two dimensions.
+We can use the array() function to create an array, and the dim parameter to specify the dimensions:
+
+```R
+```R
+#An array with one dimension with values ranging from 1 to 24
+thisarray <- c(1:24)
+thisarray
 
 
+# output :  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+
+#An array with more than one dimension
+multiarray <- array(thisarray, dim = c(4, 3, 2))       # c(Row, Column, Number of tables)
+multiarray 
+
+
+# output :
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    5    9
+[2,]    2    6   10
+[3,]    3    7   11
+[4,]    4    8   12
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]   13   17   21
+[2,]   14   18   22
+[3,]   15   19   23
+[4,]   16   20   24
+```
+**Access Array Items**
+```R
+thisarray <- c(1:24)
+multiarray <- array(thisarray, dim = c(4, 3, 2))     # array[row position, column position, matrix level]
+multiarray[2, 3, 2] 
+```
+```R
+thisarray <- c(1:24)
+
+#Access all the items from the first row from matrix one
+multiarray <- array(thisarray, dim = c(4, 3, 2))
+multiarray[c(1),,1]
+
+#Access all the items from the first column from matrix one
+multiarray <- array(thisarray, dim = c(4, 3, 2))
+multiarray[,c(1),1] 
+
+
+# output :
+[1] 1 5 9
+[1] 1 2 3 4
+```
+**Check if an Item Exists**
+```R
+thisarray <- c(1:24)
+multiarray <- array(thisarray, dim = c(4, 3, 2))
+2 %in% multiarray 
+
+# output : TRUE
+```
+**Amount of Rows and Columns**
+```R
+thisarray <- c(1:24)
+multiarray <- array(thisarray, dim = c(4, 3, 2))
+dim(multiarray) 
+
+# output : 4 3 2
+```
+**Array Length**
+
+```R
+thisarray <- c(1:24)
+multiarray <- array(thisarray, dim = c(4, 3, 2))
+length(multiarray) 
+
+
+# output : 24
+```
+**Loop Through an Array**
+```R
+thisarray <- c(1:24)
+multiarray <- array(thisarray, dim = c(4, 3, 2))
+
+for(x in multiarray){
+  print(x)} 
+
+
+# output :
+[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
+[1] 6
+[1] 7
+[1] 8
+[1] 9
+[1] 10
+[1] 11
+[1] 12
+[1] 13
+[1] 14
+[1] 15
+[1] 16
+[1] 17
+[1] 18
+[1] 19
+[1] 20
+[1] 21
+[1] 22
+[1] 23
+[1] 24
+```
+
+R-Data-Frames
+---
+Data Frames are data displayed in a format as a table.
+
+Data Frames can have different types of data inside it. While the first column can be character, the second and third can be numeric or logical. However, each column should have the same type of data.
+```R
+#Create a data frame
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+print(Data_Frame)
+
+
+# output :
+  Training Pulse Duration
+1 Strength   100       60
+2  Stamina   150       30
+3    Other   120       45
+```
+**Summarize the Data**
+```R
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+print(Data_Frame)
+summary(Data_Frame)
+
+
+# output :
+  Training Pulse Duration
+1 Strength   100       60
+2  Stamina   150       30
+3    Other   120       45
+
+
+   Training             Pulse          Duration   
+ Length:3           Min.   :100.0   Min.   :30.0
+ Class :character   1st Qu.:110.0   1st Qu.:37.5  
+ Mode  :character   Median :120.0   Median :45.0
+                    Mean   :123.3   Mean   :45.0  
+                    3rd Qu.:135.0   3rd Qu.:52.5
+                    Max.   :150.0   Max.   :60.0
+```
+**Access Items**
+
+```R
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+
+Data_Frame[1]
+Data_Frame[["Training"]]
+Data_Frame$Training 
+
+
+# output :
+  Training
+1 Strength
+2  Stamina
+3    Other
+
+
+# output : "Strength" "Stamina"  "Other"
+
+
+# output : "Strength" "Stamina"  "Other"
+```
+**Add Rows**
+```R
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+
+#Add a new row
+New_row_DF <- rbind(Data_Frame, c("Strength", 110, 110))
+
+#Print the new row
+New_row_DF 
+
+
+# output :
+  Training Pulse Duration
+1 Strength   100       60
+2  Stamina   150       30
+3    Other   120       45
+4 Strength   110      110
+```
+**Add Columns**
+
+```R
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+
+#Add a new column
+New_col_DF <- cbind(Data_Frame, Steps = c(1000, 6000, 2000))
+
+#Print the new column
+New_col_DF 
+
+
+# output :
+  Training Pulse Duration Steps
+1 Strength   100       60  1000
+2  Stamina   150       30  6000
+3    Other   120       45  2000
+```
+**Remove Rows and Columns**
+```R
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+
+#remove the first row and column
+Data_Frame_New <- Data_Frame[-c(1), -c(1)]
+
+#Print the new data frame
+Data_Frame_New 
+Data_Frame
+
+
+# output :
+  Pulse Duration
+2   150       30
+3   120       45
+
+
+# output :
+  Training Pulse Duration
+1 Strength   100       60
+2  Stamina   150       30
+3    Other   120       45
+```
+**Amount of Rows and Columns**
+```R
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+
+dim(Data_Frame) 
+Data_Frame
+
+
+# output : 3 3
+
+
+# output :
+  Training Pulse Duration
+1 Strength   100       60
+2  Stamina   150       30
+3    Other   120       45
+```
+```R
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+
+ncol(Data_Frame)
+nrow(Data_Frame) 
+
+
+# output : 3
+# output : 3
+```
+**Data Frame Length**
+```R
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+
+length(Data_Frame) 
+
+
+# output : 3
+```
+**Combining Data Frames**
+```R
+Data_Frame1 <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+
+Data_Frame2 <- data.frame (
+  Training = c("Stamina", "Stamina", "Strength"),
+  Pulse = c(140, 150, 160),
+  Duration = c(30, 30, 20))
+
+New_Data_Frame <- rbind(Data_Frame1, Data_Frame2)
+New_Data_Frame 
+
+
+# output :
+  Training Pulse Duration
+1 Strength   100       60
+2  Stamina   150       30
+3    Other   120       45
+4  Stamina   140       30
+5  Stamina   150       30
+6 Strength   160       20
+```
+```R
+Data_Frame3 <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45))
+
+Data_Frame4 <- data.frame (
+  Steps = c(3000, 6000, 2000),
+  Calories = c(300, 400, 300))
+
+New_Data_Frame1 <- cbind(Data_Frame3, Data_Frame4)
+New_Data_Frame1 
+
+
+# output :
+  Training Pulse Duration Steps Calories
+1 Strength   100       60  3000      300
+2  Stamina   150       30  6000      400
+3    Other   120       45  2000      300
+```
+**Matrix to Data frames**
+```R
+a = matrix(1:9, nrow=3, byrow=TRUE)
+print(a)
+b = data.frame(a)
+print(b)
+colnames(b) = c('c1', 'c2', 'c3')
+print(b)
+b$c1
+
+
+# output :
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+[3,]    7    8    9
+
+  X1 X2 X3
+1  1  2  3
+2  4  5  6
+3  7  8  9
+
+  c1 c2 c3
+1  1  2  3
+2  4  5  6
+3  7  8  9
+
+[1] 1 4 7
+```
+
+R-Factors
+---
+
+Factors are used to categorize data. Examples of factors are:
+
+* **Demography: Male/Female**
+* **Music: Rock, Pop, Classic, Jazz**
+* **Training: Strength, Stamina**
+
+```R
+#Create a factor
+music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"))
+music_genre 
+
+
+# output :
+[1] Jazz    Rock    Classic Classc Pop     Jazz    Rock    Jazz   
+Levels: Classic Jazz Pop Rock
+```
+```R
+music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"))
+levels(music_genre) 
+
+
+# output :
+[1] "Classic" "Jazz"    "Pop"     "Rock" 
+```
+```R
+music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"), levels = c("Classic", "Jazz", "Pop", "Rock", "Other"))
+levels(music_genre)
+
+
+# output :
+[1] "Classic" "Jazz"    "Pop"     "Rock"    "Other"
+```
+**Factor Length**
+
+```R
+music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"))
+length(music_genre) 
+
+
+# output :
+[1] 8
+```
+**Access Factors**
+```R
+music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"))
+music_genre[3] 
+
+
+# output :
+[1] Classic
+Levels: Classic Jazz Pop Rock
+```
+**Change Item Value**
+```R
+music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"))
+music_genre[3] <- "Pop"
+music_genre[3]
+
+
+# output :
+[1] Pop
+Levels: Classic Jazz Pop Rock
+```
+```R
+music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"), levels = c("Classic", "Jazz", "Pop", "Rock", "Opera"))
+music_genre[3] <- "Opera"
+music_genre[3]
+
+
+# output :
+[1] Opera
+Levels: Classic Jazz Pop Rock Opera
+```
+
+R-Plotting
+---
+The plot() function is used to draw points (markers) in a diagram.
+
+The function takes parameters for specifying points in the diagram.
+
+* **Parameter 1 specifies points on the x-axis.**
+
+* **Parameter 2 specifies points on the y-axis.**
+
+```R
+plot(1, 3)
+```
+![720daceb-93ad-4a94-ab5b-03c4ba8f7eff](https://github.com/user-attachments/assets/2e30704a-9708-40d3-833f-ae63773a3308)
+```R
+plot(c(1, 8), c(3, 10))
+```
+![ad881a62-9f21-4873-954d-5f3669a3e089](https://github.com/user-attachments/assets/d0300125-91d6-4f94-b1b6-e561fe4327cb)
+**Multiple Points**
+```R
+plot(c(1, 2, 3, 4, 5), c(3, 7, 8, 9, 12))
+```
+![ef79ea99-79ce-415f-be8a-6cc02d9d4d0c](https://github.com/user-attachments/assets/a30b013c-edb8-490b-967e-e1e8b1d40fee)
+```R
+x <- c(1, 2, 3, 4, 5)
+y <- c(3, 7, 8, 9, 12)
+
+plot(x, y)
+```
+![8f7c367c-37a9-4135-8d61-d88d913fcd0b](https://github.com/user-attachments/assets/033c4e1c-ff96-4096-80ad-e101efb49707)
+**Sequences of Points**
+```R
+plot(1:10)
+```
+![8659e72b-217e-43d4-a6b3-6863d151d4a5](https://github.com/user-attachments/assets/49486e88-0a81-48c1-ad64-5e8f5784c798)
+**Draw a Line**
+```R
+plot(1:10, type="l")
+```
+![11523d62-6120-487b-9e3e-fbd1f7a4561d](https://github.com/user-attachments/assets/7e11eac4-53c9-483c-b100-0da651386915)
+**Plot Labels**
+```R
+plot(1:10, main="My Graph", xlab="The x-axis", ylab="The y axis")
+```
+![ff2454c3-90a8-4976-b89d-6d0b8015ff98](https://github.com/user-attachments/assets/1fdae650-493f-4275-8cdf-3d1a7a7f10f8)
+**Colors**
+
+```R
+plot(1:10, col="red")
+```
+![f63bf6e6-5429-4924-a1bc-cd2496df8718](https://github.com/user-attachments/assets/35fa91bf-212c-4e60-ba0b-6e930f5be755)
+**Size**
+```R
+plot(1:10, cex=2)
+```
+![4b876860-fc37-4d07-9c85-a5d9b53f67db](https://github.com/user-attachments/assets/b40ebe32-b5b7-4708-b569-813b8f599c39)
+
+**Point Shape**
+```R
+plot(1:10, pch=25, cex=2)    # pch can change the shape
+```
+![b1ad81ce-dddf-49dc-90fe-c29337a71f89](https://github.com/user-attachments/assets/51a018b5-883c-44e2-8565-f590988c1e61)
+
+pch parameter ranges :
+
+![download](https://github.com/user-attachments/assets/c0f48c63-591a-44fa-8485-883a03d40729)
+
+R-Line
+---
+```R
+plot(1:10, type="l")
+```
+![2351a310-f29a-43f8-85f0-0a3ca76dca54](https://github.com/user-attachments/assets/aa793c57-d010-4dd9-a47c-a8321a30e684)
+**Line Color**
+```R
+plot(1:10, type="l", col="blue")
+```
+![ce1d8c76-1fce-425d-a8d7-c4a0dd3fa4a0](https://github.com/user-attachments/assets/1015d60e-77c6-4a46-8f9b-d95a386bf7bb)
+
+**Line Width**
+```R
+plot(1:10, type="l", lwd=2)
+```
+![43011e81-9e18-4adb-8743-9c7fbfc22667](https://github.com/user-attachments/assets/1930a3c3-8c65-4e04-9338-57dfc9b1297e)
+**Line Styles**
+
+```R
+plot(1:10, type="l", lwd=5, lty=3) 
+```
+![f3de059d-d4f1-4006-8c9d-32213f890e75](https://github.com/user-attachments/assets/1eca4626-57bf-4f19-ae3c-f5e6676570ea)
+* 0 removes the line
+
+* 1 displays a solid line
+
+* 2 displays a dashed line
+
+* 3 displays a dotted line
+
+* 4 displays a "dot dashed" line
+
+* 5 displays a "long dashed" line
+
+* 6 displays a "two dashed" line
+
+**Multiple Lines**
+```R
+line1 <- c(1,2,3,4,5,10)
+line2 <- c(2,5,7,8,9,10)
+
+plot(line1, type = "l", col = "blue")
+lines(line2, type="l", col = "red")
+```
+![c4634149-3eb1-44c1-b35f-fa9ec7e8618b](https://github.com/user-attachments/assets/bcf19fee-4d5a-4dd4-abd5-0142c96d30de)
+
+R-Scatter-Plot
+---
+```R
+x <- c(5,7,8,7,2,2,9,4,11,12,9,6)
+y <- c(99,86,87,88,111,103,87,94,78,77,85,86)
+
+plot(x, y)
+```
+![737feb9a-ef5b-4896-8014-8f25d80c9bb3](https://github.com/user-attachments/assets/778a01aa-fe74-4f1f-ad33-3f0552214160)
+```R
+x <- c(5,7,8,7,2,2,9,4,11,12,9,6)
+y <- c(99,86,87,88,111,103,87,94,78,77,85,86)
+
+plot(x, y, main="Observation of Cars", xlab="Car age", ylab="Car speed")
+```
+![3f979146-04be-4e6d-ae5f-ce34a421d283](https://github.com/user-attachments/assets/4f89a85d-af6a-4ca6-a045-756bdf8bd393)
+
+**Compare Plots**
+To compare the plot with another plot, use the points() function:
+```R
+x1 <- c(5,7,8,7,2,2,9,4,11,12,9,6)
+y1 <- c(99,86,87,88,111,103,87,94,78,77,85,86)
+
+x2 <- c(2,2,8,1,15,8,12,9,7,3,11,4,7,14,12)
+y2 <- c(100,105,84,105,90,99,90,95,94,100,79,112,91,80,85)
+
+plot(x1, y1, main="Observation of Cars", xlab="Car age", ylab="Car speed", col="red", cex=2)
+points(x2, y2, col="blue", cex=2)
+```
+![ac26935b-1a8d-4c0e-be53-90d29ecbbed7](https://github.com/user-attachments/assets/906df658-588c-46c2-a6af-bce5384072c5)
+
+
+R-Pie-Charts
+---
+```R
+x <- c(10,20,30,40)
+pie(x)
+```
+![b94b4597-e52f-4026-855b-499e489645f0](https://github.com/user-attachments/assets/c695464d-0bb1-4cf8-9241-5572342e6665)
+```R
+x <- c(10,20,30,40)
+pie(x, init.angle = 90)
+```
+![085569c5-e990-4380-8e54-68681609fc88](https://github.com/user-attachments/assets/c87288bf-9610-421d-963b-d5b36adb3605)
+
+**Labels and Header**
+```R
+x <- c(10,20,30,40)
+
+mylabel <- c("Apples", "Bananas", "Cherries", "Dates")
+
+pie(x, label = mylabel, main = "Fruits")
+```
+![db0eca36-3164-4174-be3a-909c48dfc431](https://github.com/user-attachments/assets/187150cd-7422-4523-8099-10cab59a918c)
+**Colors**
+```R
+x <- c(10,20,30,40)
+
+colors <- c("blue", "yellow", "green", "black")
+
+pie(x, label = mylabel, main = "Fruits", col = colors)
+```
+![ccf66236-9940-4537-b0a7-03e6a9b2a946](https://github.com/user-attachments/assets/6e43cd61-8902-4534-a6d9-2ad2a4045df9)
+**Legend**
+
+```R
+x <- c(10,20,30,40)
+
+mylabel <- c("Apples", "Bananas", "Cherries", "Dates")
+
+#Create a vector of colors
+colors <- c("blue", "yellow", "green", "black")
+
+#Display the pie chart with colors
+pie(x, label = mylabel, main = "Pie Chart", col = colors)
+
+#Display the explanation box
+legend("bottomright", mylabel, fill = colors)
+```
+![fc3c5344-3d88-45a2-b2be-abe4ebbff8a7](https://github.com/user-attachments/assets/cde26b4b-3589-47c5-bed5-8a6f6506041e)
+The legend can be positioned as either:
+
+`bottomright, bottom, bottomleft, left, topleft, top, topright, right, center `
+
+R-Bar-Charts
+---
+```R
+#x-axis values
+x <- c("A", "B", "C", "D")
+
+#y-axis values
+y <- c(2, 4, 6, 8)
+
+barplot(y, names.arg = x)
+```
+![3bd859b8-3b5e-459d-aedd-e42fda9a6042](https://github.com/user-attachments/assets/071ec7dd-3e5c-4649-863d-6cacd78a4f56)
+* The x variable represents values in the x-axis (A,B,C,D)
+
+* The y variable represents values in the y-axis (2,4,6,8)
+
+* Then we use the barplot() function to create a bar chart of the values
+
+* `names.arg` defines the names of each observation in the x-axis (under the bar)
+
+**Bar Color**
+```R
+x <- c("A", "B", "C", "D")
+y <- c(2, 4, 6, 8)
+
+barplot(y, names.arg = x, col = "red")
+```
+![ed65b0f4-317d-4f9f-95a2-ae9ca9ed13f0](https://github.com/user-attachments/assets/224f7a94-fb15-45a4-900f-4914858000cd)
+```R
+child = c(0,1,1,0,3,2,2,1,0,0,2,2,2,3,0,4,0,1,0,3)
+barplot(table(child), col = rainbow(5))
+```
+![b5cd2507-6cb1-4832-b114-3795f5fb141b](https://github.com/user-attachments/assets/04d3e098-0244-4f0d-b49a-ec3af7a7d6fd)
+
+**Density / Bar Texture**
+```R
+x <- c("A", "B", "C", "D")
+y <- c(2, 4, 6, 8)
+
+barplot(y, names.arg = x, density = 10)
+```
+![52297301-130f-4f07-8d57-fd764c6d43be](https://github.com/user-attachments/assets/6a5294e2-40d0-41f4-a64d-fa0e738c3ee3)
+
+**Bar Width**
+
+```R
+x <- c("A", "B", "C", "D")
+y <- c(2, 4, 6, 8)
+
+barplot(y, names.arg = x, width = c(1,2,3,4))
+```
+
+![4eaa56d2-d196-448b-86fd-b3f026f89c04](https://github.com/user-attachments/assets/644b67db-640a-4494-a6ba-e49a2ac13f2b)
+
+**Horizontal Bars**
+```R
+x <- c("A", "B", "C", "D")
+y <- c(2, 4, 6, 8)
+
+barplot(y, names.arg = x, horiz = TRUE)
+```
+![43923e02-f855-45f1-9f0e-3121467d2ad3](https://github.com/user-attachments/assets/bcd07bc3-b19e-4537-8503-8999a2ae51a5)
+
+
+R-Statistics
+---
+* Mean, median and mode
+* Minimum and maximum value
+* Percentiles
+* Variance and Standard Devation
+* Covariance and Correlation
+* Probability distributions
+
+### R Data Set
+A data set is a collection of data, often presented in a table.
+
+There is a popular built-in data set in R called "mtcars" (Motor Trend Car Road Tests), which is retrieved from the 1974 Motor Trend US Magazine.
+
+```R
+print(mtcars)
+
+
+# output :
+                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+```
+
+**Information About the Data Set**
+```R
+?mtcars
+```
+**Get Information**
+```R
+Data_Cars <- mtcars     # create a variable of the mtcars data set for better organization
+dim(Data_Cars)          # Use dim() to find the dimension of the data set 
+names(Data_Cars)        # Use names() to find the names of the variables from the data set
+
+
+# output :
+[1] 32 11
+
+[1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+[11] "carb"
+```
+```R
+Data_Cars <- mtcars
+rownames(Data_Cars)    # Use the rownames() function to get the name of each row in the first column, which is the name of each car:
+
+
+ [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         
+ [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            
+ [7] "Duster 360"          "Merc 240D"           "Merc 230"           
+[10] "Merc 280"            "Merc 280C"           "Merc 450SE"         
+[13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood" 
+[16] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           
+[19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      
+[22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         
+[25] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      
+[28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       
+[31] "Maserati Bora"       "Volvo 142E"
+```
+
+From the examples above, we have found out that the data set has 32 observations (Mazda RX4, Mazda RX4 Wag, Datsun 710, etc) and 11 variables (mpg, cyl, disp, etc).
+
+A variable is defined as something that can be measured or counted.
+
+Here is a brief explanation of the variables from the mtcars data set:
+
+
+* Variable Name : Description
+
+* mpg : Miles/(US) Gallon
+
+* cyl : Number of cylinders
+
+* disp : Displacement
+
+* hp : Gross horsepower
+
+* drat : Rear axle ratio
+
+* wt : Weight (1000 lbs)
+
+* qsec : 1/4 mile time
+
+* vs : Engine (0 = V-shaped, 1 = straight)
+
+* am : Transmission (0 = automatic, 1 = manual)
+
+* gear : Number of forward gears
+
+* carb : Number of carburetors
+
+
+**Print Variable Values**
+
+If you want to print all values that belong to a variable, access the data frame by using the $ sign, and the name of the variable (for example cyl (cylinders)):
+
+```R
+Data_Cars <- mtcars
+Data_Cars$cyl
+
+
+# output :
+[1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
+```
 
 
