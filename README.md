@@ -1,10 +1,90 @@
-# R-HandBook
+R-HandBook
+===============================
+![Monty Python](https://cdn.dribbble.com/users/330915/screenshots/3587000/10_coding_dribbble.gif)
 
 ## Introduction
-**Welcome to my python handbook! This handbook is a complete collection of Python tips and topics in a "learning by example" approach and I hope it is useful.**
+**Welcome to my R handbook!
+This handbook is a complete collection of R tips and topics in a "learning by example" approach and I hope it is useful.**
+
+### What is R?
+**R is a programming language for statistical computing and data visualization. It has been adopted in the fields of data mining, bioinformatics and data analysis.
+The core R language is augmented by a large number of extension packages, containing reusable code, documentation, and sample data.
+R software is open-source and free software. It is licensed by the GNU Project and available under the GNU General Public License. It is written primarily in C, Fortran, and R itself. Precompiled executables are provided for various operating systems.
+As an interpreted language, R has a native command line interface. Moreover, multiple third-party graphical user interfaces are available, such as RStudio—an integrated development environment—and Jupyter—a notebook interface. **
+
+### What can R do?
+**R can handle data analysis, statistical modeling, machine learning, data visualization, and reporting. It is widely used for tasks like regression, classification, clustering, time series analysis, and working with large datasets.**
+
+### Why R?
+**R is great for statistical analysis, data visualization, and machine learning. It has extensive libraries, strong community support, and is widely used in academia and industry for data science.**
+
+### good to know!
+**R : [https://www.python.org/](https://www.r-project.org/)**
+
+**RStudio : [https://pypi.org/](https://posit.co/download/rstudio-desktop/)**
+
+**Learn more about python : [https://www.w3schools.com/python/default.asp](https://www.w3schools.com/r/default.asp)**
 
 ## Contents
 **&nbsp;&nbsp;&nbsp;** **1. R-Syntax :** **&nbsp;**  **[`R-Syntax`](#r-syntax)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **3. R-Variables :** **&nbsp;**  **[`R-Variables`](#r-variables)** 
+
+**&nbsp;&nbsp;&nbsp;** **4. R-Data-Types :** **&nbsp;**  **[`R-Data-Types`](#r-data-types)** 
+
+**&nbsp;&nbsp;&nbsp;** **5. What-is-Data-Type :** **&nbsp;**  **[`What-is-Data-Type`](#what-is-data-type)** 
+
+**&nbsp;&nbsp;&nbsp;** **6. type-conversion :** **&nbsp;**  **[`Type-Conversion`](#type-conversion)** 
+
+**&nbsp;&nbsp;&nbsp;** **7. R-Input :** **&nbsp;**  **[`R-Input`](#r-input)** 
+
+**&nbsp;&nbsp;&nbsp;** **8. r-math :** **&nbsp;**  **[`R-Math`](#r-math)** 
+
+**&nbsp;&nbsp;&nbsp;** **9. R-Strings :** **&nbsp;**  **[`R-Strings`](#r-strings)** 
+
+**&nbsp;&nbsp;&nbsp;** **10. R-Booleans-Logical-Values :** **&nbsp;**  **[`R-Booleans-Logical-Values`](#r-booleans-logical-values)** 
+
+**&nbsp;&nbsp;&nbsp;** **11. R-Operators :** **&nbsp;**  **[`R-Operators`](#r-operators)** 
+
+**&nbsp;&nbsp;&nbsp;** **12. R-If-Else :** **&nbsp;**  **[`R-If-Else`](#r-if-else)** 
+
+**&nbsp;&nbsp;&nbsp;** **13. R-AND-OR-Operators :** **&nbsp;**  **[`R-AND-OR-Operators`](#r-and-or-operators)** 
+
+**&nbsp;&nbsp;&nbsp;** **14. R-While-Loop :** **&nbsp;**  **[`R-While-Loop`](#r-while-loop)** 
+
+**&nbsp;&nbsp;&nbsp;** **15. R-For-Loop :** **&nbsp;**  **[`R-For-Loop`](#r-for-loop)** 
+
+**&nbsp;&nbsp;&nbsp;** **16. R-Functions :** **&nbsp;**  **[`R-Functions`](#r-functions)** 
+
+**&nbsp;&nbsp;&nbsp;** **17. R-Vectors :** **&nbsp;**  **[`R-Vectors`](#r-vectors)** 
+
+**&nbsp;&nbsp;&nbsp;** **18. R-Lists :** **&nbsp;**  **[`R-Lists`](#r-lists)** 
+
+**&nbsp;&nbsp;&nbsp;** **19. R-Matrices :** **&nbsp;**  **[`R-Matrices`](#r-matrices)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
+
+**&nbsp;&nbsp;&nbsp;** **2. R-Comments :** **&nbsp;**  **[`R-Comments`](#r-comments)** 
 
 
 R-Syntax
@@ -160,8 +240,8 @@ print(result)
 ```
 
 
-## R Comments
-
+R-Comments
+---
 ```R
 "Hello World!" # This is a comment 
 
@@ -169,8 +249,8 @@ print(result)
 # output : "Hello World!"
 ```
 
-## R Variables
-
+R-Variables
+---
 ```R
 name <- "John"
 age <- 40
@@ -224,8 +304,8 @@ my_v@ar <- "John"
 TRUE <- "John"
 ```
 
-## R Data Types
-
+R-Data-Types
+---
 ```R
 my_var <- 30                # my_var is type of numeric
 my_var <- "Sally"           # my_var is now of type character (aka string) 
@@ -312,7 +392,9 @@ is.character(b)
 
 # output :  TRUE
 ```
-## What is Data Type
+
+What-is-Data-Type
+---
 **mode()**
 ```R 
 a <- 3.14
@@ -365,7 +447,9 @@ typeof(d)
 # output :  "logical"
 # output :  "list"
 ```
-## Type Conversion
+
+Type-Conversion
+---
 You can convert from one type to another with the following functions:
 
 * **as.numeric()**
@@ -405,7 +489,9 @@ print(b)
 
 # output :  "gggggg"
 ```
-## R Input
+
+R-Input
+---
 **readline()**
 ```R 
 f <- readline()
@@ -432,7 +518,9 @@ print(f)
 
 # output : "spsps" "spsps" "spsps"
 ```
-## R Math
+
+R-Math
+---
 `x + y`  Addition
 
 `x - y` Subtraction
@@ -577,7 +665,9 @@ sum(x)
 # output : 15
 ```
 1 + 2 + 3 + 4 + 5 = 15
-## R Strings
+
+R-Strings
+---
 ```R 
 "hello"
 'hello'
@@ -641,8 +731,9 @@ Other escape characters in R:
 
 `\b` Backspace
 
-## R Booleans / Logical Values
 
+R-Booleans-Logical-Values
+---
 ```R 
 10 > 9    # TRUE because 10 is greater than 9
 10 == 9   # FALSE because 10 is not equal to 9
@@ -673,7 +764,9 @@ if (b > a) {
 
 # output : "b < a"
 ```
-## R Operators
+
+R-Operators
+---
 ### R Assignment Operators
 ```R 
 my_var <- 3
@@ -728,7 +821,9 @@ my_var
 
 `%*%`	Matrix Multiplication 	`x <- Matrix1 %*% Matrix2`
 
-## R If ... Else
+
+R-If-Else
+---
 ```R 
 a <- 33
 b <- 200
@@ -793,7 +888,9 @@ if (x > 10) {
 # output : "Above ten"
 # output : "and also above 20!"
 ```
-## R - AND OR Operators
+
+R-AND-OR-Operators
+---
 ```R 
 a <- 200
 b <- 33
@@ -832,7 +929,9 @@ xor(1, 1)               # This function returns TRUE only if one of the two cond
 # output : TRUE
 # output : FALSE
 ```
-## R While Loop
+
+R-While-Loop
+---
 ```R 
 i <- 1
 while (i < 6) {
@@ -891,8 +990,9 @@ while (dice <= 6) {
 # output : "No Yahtzee"
 # output : "Yahtzee!"
 ```
-## R For Loop
 
+R-For-Loop
+---
 ```R 
 for (x in 1:10) {
   print(x)} 
@@ -994,7 +1094,9 @@ fruits <- list("apple", "banana", "cherry")
 # output : "tasty banana"
 # output : "tasty cherry"
 ```
-## R Functions
+
+R-Functions
+---
 ```R 
 my_function <- function() { 
   print("Hello World!")} 
@@ -1053,6 +1155,7 @@ print(my_function(9))
 # output : 25
 # output : 45
 ```
+
 ### Nested Functions
 ```R 
 Nested_function <- function(x, y) {
@@ -1182,7 +1285,9 @@ paste("R is", txt)
 # output : "R is fantastic"
 # output : "R is fantastic"
 ```
-## R Vectors
+
+R-Vectors
+---
 A vector is simply a list of items that are of the same type.
 
 To combine the list of items to a vector, use the c() function and separate the items by a comma.
@@ -1398,7 +1503,9 @@ seq(from = 10, to = 1, by = -2)
 
 # output : 10 8 6 4 2
 ```
-## R Lists
+
+R-Lists
+---
 A list in R can contain many different data types inside it. A list is a collection of data which is ordered and changeable.
 
 ```R 
@@ -1525,7 +1632,9 @@ list3
 # output : 2
 # output : 3
 ```
-## R Matrices
+
+R-Matrices
+---
 A matrix is a two dimensional data set with columns and rows.
 
 A column is a vertical representation of data, while a row is a horizontal representation of data.
