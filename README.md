@@ -1,7 +1,14 @@
 # R-HandBook
 
-## R Syntax
+## Introduction
+**Welcome to my python handbook! This handbook is a complete collection of Python tips and topics in a "learning by example" approach and I hope it is useful.**
 
+## Contents
+**&nbsp;&nbsp;&nbsp;** **1. R-Syntax :** **&nbsp;**  **[`R-Syntax`](#r-syntax)** 
+
+
+R-Syntax
+---
 ```R
 "hello world"
 
